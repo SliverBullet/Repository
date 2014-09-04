@@ -1,6 +1,7 @@
 package framwork.easy.android.utils;
 
 
+
 public class PrintUtil {
 	public static void squarePrint(String string) {
 		String msg = string;

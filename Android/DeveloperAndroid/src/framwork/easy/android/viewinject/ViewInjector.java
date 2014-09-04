@@ -9,7 +9,9 @@ import android.app.Activity;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
+import android.util.Log;
 import android.view.View;
+import framwork.easy.android.config.Tags;
 import framwork.easy.android.viewinject.view.EventListenerManager;
 import framwork.easy.android.viewinject.view.ResLoader;
 import framwork.easy.android.viewinject.view.ViewFinder;
@@ -84,7 +86,7 @@ public class ViewInjector {
 							field.set(handler, view);
 						}
 					} catch (Throwable e) {
-						System.err.println(e);
+						Log.e(Tags.TAG_EXCEPTION,e.getMessage() , e);
 					}
 				} else {
 					ResInject resInject = field.getAnnotation(ResInject.class);
@@ -97,7 +99,7 @@ public class ViewInjector {
 								field.set(handler, res);
 							}
 						} catch (Throwable e) {
-							System.err.println(e);
+							Log.e(Tags.TAG_EXCEPTION,e.getMessage() , e);
 						}
 					} else {
 						PreferenceInject preferenceInject = field
@@ -112,7 +114,7 @@ public class ViewInjector {
 									field.set(handler, preference);
 								}
 							} catch (Throwable e) {
-								System.err.println(e);
+								Log.e(Tags.TAG_EXCEPTION,e.getMessage() , e);
 							}
 						}
 					}
@@ -140,7 +142,7 @@ public class ViewInjector {
 									parentIdMethod = annType
 											.getDeclaredMethod("parentId");
 								} catch (Throwable e) {
-									System.err.println(e);
+									Log.e(Tags.TAG_EXCEPTION,e.getMessage() , e);
 								}
 								Object values = valueMethod.invoke(annotation);
 								Object parentIds = parentIdMethod == null ? null
@@ -157,7 +159,7 @@ public class ViewInjector {
 											info, annotation, handler, method);
 								}
 							} catch (Throwable e) {
-								System.err.println(e);
+								Log.e(Tags.TAG_EXCEPTION,e.getMessage() , e);
 							}
 						}
 					}

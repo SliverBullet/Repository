@@ -2,7 +2,8 @@ package framwork.easy.android.base;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import framwork.easy.android.utils.PrintUtil;
+import android.util.Log;
+import framwork.easy.android.config.Tags;
 import framwork.easy.android.viewinject.ViewInjector;
 import framwork.easy.android.viewinject.view.annotation.ContentView;
 
@@ -18,7 +19,7 @@ public abstract class BaseActivity extends FragmentActivity {
 		onSetContentView();
 		setContentView();
 		getBaseApplication().getActivityStackManager().addActivity(this);
-		PrintUtil.squarePrint("onCreate--->" + this.getClass().getName());
+		Log.d(Tags.TAG_ACTIVITY, "onCreate--->" + this.getClass().getName());
 		ViewInjector.inject(this);
 		onAfterOnCreate();
 	}
@@ -50,7 +51,7 @@ public abstract class BaseActivity extends FragmentActivity {
 	@Override
 	protected void onDestroy() {
 		getBaseApplication().getActivityStackManager().removeActivity(this);
-		PrintUtil.squarePrint("onDestroy--->" + this.getClass().getName());
+		Log.d(Tags.TAG_ACTIVITY, "onDestroy--->" + this.getClass().getName());
 		super.onDestroy();
 	}
 }

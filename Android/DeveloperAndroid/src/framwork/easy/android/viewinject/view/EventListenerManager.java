@@ -7,7 +7,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
 
+import android.util.Log;
 import android.view.View;
+import framwork.easy.android.config.Tags;
 import framwork.easy.android.viewinject.view.annotation.event.EventBase;
 
 public class EventListenerManager {
@@ -50,7 +52,7 @@ public class EventListenerManager {
 				setEventListenerMethod.invoke(view, listener);
 			}
 		} catch (Throwable e) {
-			System.err.println(e);
+			Log.e(Tags.TAG_EXCEPTION,e.getMessage() , e);
 		}
 	}
 

@@ -2,10 +2,11 @@ package framwork.easy.android.base;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import framwork.easy.android.utils.PrintUtil;
+import framwork.easy.android.config.Tags;
 import framwork.easy.android.viewinject.ViewInjector;
 import framwork.easy.android.viewinject.view.annotation.ContentView;
 
@@ -21,7 +22,7 @@ public abstract class BaseFragment extends Fragment {
 			Bundle savedInstanceState) {
 		onSetContentView();
 		View view = getContentView(inflater, container);
-		PrintUtil.squarePrint("onCreate--->" + this.getClass().getName());
+		Log.d(Tags.TAG_FRAGMENT, "onCreate--->" + this.getClass().getName());
 		ViewInjector.inject(this, view);
 		onAfterOnCreate();
 		return view;
@@ -55,7 +56,7 @@ public abstract class BaseFragment extends Fragment {
 
 	@Override
 	public void onDestroy() {
-		PrintUtil.squarePrint("onDestroy--->" + this.getClass().getName());
+		Log.d(Tags.TAG_FRAGMENT, "onDestroy--->" + this.getClass().getName());
 		super.onDestroy();
 	}
 }

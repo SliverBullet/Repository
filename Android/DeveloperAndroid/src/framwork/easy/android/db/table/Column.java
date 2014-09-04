@@ -25,7 +25,8 @@ public class Column {
 	protected final Field columnField;
 	protected final ColumnConverter columnConverter;
 
-	/* package */Column(Class<?> entityType, Field field) {
+	/* package */
+	public Column(Class<?> entityType, Field field) {
 		this.columnField = field;
 		this.columnConverter = ColumnConverterFactory.getColumnConverter(field
 				.getType());
@@ -51,7 +52,7 @@ public class Column {
 			try {
 				setMethod.invoke(entity, value == null ? defaultValue : value);
 			} catch (Throwable e) {
-				Log.e(Tags.TAG_EXCEPTION,e.getMessage(), e);
+				Log.e(Tags.TAG_EXCEPTION, e.getMessage(), e);
 			}
 		} else {
 			try {
@@ -59,7 +60,7 @@ public class Column {
 				this.columnField.set(entity, value == null ? defaultValue
 						: value);
 			} catch (Throwable e) {
-				Log.e(Tags.TAG_EXCEPTION,e.getMessage(), e);
+				Log.e(Tags.TAG_EXCEPTION, e.getMessage(), e);
 			}
 		}
 	}
@@ -84,7 +85,7 @@ public class Column {
 					this.columnField.setAccessible(true);
 					fieldValue = this.columnField.get(entity);
 				} catch (Throwable e) {
-					Log.e(Tags.TAG_EXCEPTION,e.getMessage(), e);
+					Log.e(Tags.TAG_EXCEPTION, e.getMessage(), e);
 				}
 			}
 		}
@@ -95,7 +96,8 @@ public class Column {
 		return table;
 	}
 
-	/* package */void setTable(Table table) {
+	/* package */
+	public void setTable(Table table) {
 		this.table = table;
 	}
 
